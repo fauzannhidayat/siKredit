@@ -5,7 +5,7 @@ use App\Http\Controllers\PengajuanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return to_route('pengajuan.index');
 });
 
 Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
