@@ -4,7 +4,7 @@ Aplikasi berbasis web internal untuk mencatat, melihat, dan mengelola status pen
 
 ## Tech Stack
 * **Framework:** Laravel 13
-* **Language:** PHP 8.4
+* **Language:** PHP 8.4 & Node.js 20+
 * **Frontend:** Tailwind CSS & Alpine.js
 * **Architecture:** Service & Repository Pattern (SOLID Principles)
 
@@ -25,32 +25,47 @@ Aplikasi berbasis web internal untuk mencatat, melihat, dan mengelola status pen
 Ikuti langkah-langkah di bawah ini untuk menjalankan project di lingkungan lokal Anda:
 
 1. Kloning Repository:
-   git clone <url-repository-anda>
-   cd <nama-folder-project>
+   ```bash
+   git clone https://github.com/fauzannhidayat/siKredit.git
+   cd siKredit
+   ```
 
-2. Install Dependensi PHP dan npm (Pastikan komputer Anda terpasang PHP 8.4 dan Composer):
-   - composer install
-   - npm install
+3. Install Dependensi PHP dan npm (Pastikan komputer Anda terpasang PHP 8.4, Node.js 20+ dan Composer):
+   ```bash
+   composer install
+   npm install
+   ```
 
-4. Konfigurasi Environment (.env):
+5. Konfigurasi Environment (.env):
+   ```bash
    cp .env.example .env
+   ```
    (Sesuaikan konfigurasi database `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` pada file `.env` Anda).
-   rekomendasi:
+   
+   Rekomendasi:
+   ```bash
    DB_CONNECTION=sqlite
-   #DB_HOST=127.0.0.1
-   #DB_PORT=3306
-   #DB_DATABASE=nama_database_anda
-   #DB_USERNAME=root
-   #DB_PASSWORD=
+   # DB_HOST=127.0.0.1
+   # DB_PORT=3306
+   # DB_DATABASE=nama_database_anda
+   # DB_USERNAME=root
+   # DB_PASSWORD=
+   ```
    (secara default project ini sudah menggunakan database.sqlite yang sudah disediakan)
 
-6. Generate Application Key:
+7. Generate Application Key:
+   ```bash
    php artisan key:generate
+   ```
 
-7. Jalankan Migrasi Database:
-   php artisan migrate (jika menggunakan sqlite tidak perlu dijalankan)
+9. Jalankan Migrasi Database:
+    ```bash
+   php artisan migrate
+    ```
 
-8. Jalankan Server Lokal:
-   - php artisan serve
-   - npm run dev && npm run build
+11. Jalankan Server Lokal:
+    ```bash
+    php artisan serve
+    npm run dev && npm run build
+    ```
    (Aplikasi sekarang dapat diakses melalui browser di alamat: http://127.0.0.1:8000).
