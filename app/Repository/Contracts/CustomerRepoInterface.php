@@ -11,4 +11,5 @@ interface CustomerRepoInterface
     public function findCustomerByName(string $name): ?Customer;
     public function searchCustomerByName(string $name, int $limit): Collection;
     public function firstOrCreate(array $data): Customer;
+    public function updateCustomer(Customer $customer, array $data): Customer;
 }

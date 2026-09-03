@@ -61,7 +61,21 @@ class PengajuanService
 
     public function updatePengajuan(Pengajuan $pengajuan, array $data)
     {
-        return $this->pengajuanRepository->updatePengajuan($pengajuan, $data);
+        return DB::transaction(function () use ($pengajuan, $data) {
+            $this->customerRepository->updateCustomer($pengajuan->customer, [
+                'nama_lengkap' => $data['nama_lengkap'],
+                'pendapatan_per_bulan' => $data['pendapatan_per_bulan'],
+            ]);
+
+            $data['tagihan_per_bulan'] = $this->hitungTagihanService->hitungTagihan(
+                $data['nominal_pengajuan'],
+                $data['tenor']
+            );
+
+            unset($data['nama_lengkap'], $data['pendapatan_per_bulan']);
+
+            return $this->pengajuanRepository->updatePengajuan($pengajuan, $data);
+        });
     }
 
     public function updateStatusPengajuan(Pengajuan $pengajuan, string $status)
@@ -71,6 +85,14 @@ class PengajuanService
 
     public function deletePengajuan(Pengajuan $pengajuan)
     {
-        return $this->pengajuanRepository->deletePengajuan($pengajuan);
+        return DB::transaction(function () use ($pengajuan) {
+            $deleted = $this->pengajuanRepository->deletePengajuan($pengajuan);
+
+            if ($pengajuan->customer && $pengajuan->customer->pengajuans()->doesntExist()) {
+                $pengajuan->customer->delete();
+            }
+
+            return $deleted;
+        });
     }
 }

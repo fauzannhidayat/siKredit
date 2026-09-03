@@ -10,7 +10,7 @@ export function formTagihan(initialValues = {}) {
         nominalPengajuanDisplay: formatThousands(nominalPengajuan),
         pendapatanPerBulan: pendapatanPerBulan.replace(/\D/g, ''),
         pendapatanPerBulanDisplay: formatThousands(pendapatanPerBulan),
-        tenor: '',
+        tenor: String(initialValues.tenor || ''),
         estimasiTagihan: 0,
 
         updateNominal(value) {

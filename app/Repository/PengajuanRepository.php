@@ -19,7 +19,9 @@ class PengajuanRepository implements PengajuanRepoInterface
     }
 
     public function updatePengajuan(Pengajuan $pengajuan, array $data){
+        $pengajuan->update($data);
 
+        return $pengajuan->refresh();
     }
 
     public function updateStatusPengajuan(Pengajuan $pengajuan, string $status){
@@ -31,7 +33,7 @@ class PengajuanRepository implements PengajuanRepoInterface
         return $pengajuan->refresh();
     }
     public function deletePengajuan(Pengajuan $pengajuan){ 
-        
+        return $pengajuan->delete();
     }
 
     public function getPengajuanByCustomerId(int $customerId)

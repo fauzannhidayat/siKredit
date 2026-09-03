@@ -13,4 +13,8 @@ Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajua
 Route::patch('/pengajuan/{pengajuan}/status/{status}', [PengajuanController::class, 'updateStatus'])
     ->name('pengajuan.update-status');
 
+Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'detail'])->name('pengajuan.detail');
+Route::put('/pengajuan/{pengajuan}', [PengajuanController::class, 'update'])->name('pengajuan.update');
+Route::delete('/pengajuan/{pengajuan}', [PengajuanController::class, 'destroy'])->name('pengajuan.destroy');
+
 Route::get('/customer/search', [CustomerController::class, 'search'])->name('customer.search');

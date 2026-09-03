@@ -26,6 +26,13 @@ class CustomerRepository implements CustomerRepoInterface
         );
     }
 
+    public function updateCustomer(Customer $customer, array $data): Customer
+    {
+        $customer->update($data);
+
+        return $customer->refresh();
+    }
+
     public function searchCustomerByName(string $name, int $limit = 8): Collection
     {
         return Customer::where('nama_lengkap', 'like', '%' . $name . '%')

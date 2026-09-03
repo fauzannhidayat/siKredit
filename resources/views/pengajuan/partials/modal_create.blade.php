@@ -2,7 +2,8 @@
 <div
     x-data="formTagihan({
         nominalPengajuan: '{{ old('nominal_pengajuan') }}',
-        pendapatanPerBulan: '{{ old('pendapatan_per_bulan') }}'
+        pendapatanPerBulan: '{{ old('pendapatan_per_bulan') }}',
+        tenor: '{{ old('tenor') }}'
     })" 
     @customer-found.window="updatePendapatan(String($event.detail.pendapatan_per_bulan))"
     x-cloak

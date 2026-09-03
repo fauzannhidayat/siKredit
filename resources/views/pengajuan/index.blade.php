@@ -6,7 +6,6 @@
     <div
         x-data="{
             showModalCreate: {{ $errors->any() ? 'true' : 'false' }},
-            showModalDetail: false,
             showModalConfirm: false,
             selectedPengajuan: null,
             confirmStatus: '',
@@ -20,10 +19,6 @@
                     currency: 'IDR',
                     maximumFractionDigits: 0,
                 }).format(value);
-            },
-            openDetail(pengajuan) {
-                this.selectedPengajuan = pengajuan;
-                this.showModalDetail = true;
             },
             openConfirm(pengajuan, status) {
                 this.selectedPengajuan = pengajuan;
@@ -108,25 +103,11 @@
                                         Tolak
                                     </button>
                                 @endif
-
-                                <button
-                                    type="button"
-                                    @click="openDetail(@js([
-                                        'id' => $p->id,
-                                        'nama_lengkap' => $p->customer->nama_lengkap,
-                                        'pendapatan_per_bulan' => $p->customer->pendapatan_per_bulan,
-                                        'tipe_pengajuan' => $p->tipe_pengajuan,
-                                        'nominal_pengajuan' => $p->nominal_pengajuan,
-                                        'tenor' => $p->tenor,
-                                        'tagihan_per_bulan' => $p->tagihan_per_bulan,
-                                        'tanggal_pengajuan' => $p->tanggal_pengajuan,
-                                        'tanggal_persetujuan' => $p->tanggal_persetujuan,
-                                        'status' => $p->status,
-                                        'catatan' => $p->catatan,
-                                    ]))"
+                                <a
+                                    href="{{ route('pengajuan.detail', $p->id) }}"
                                     class="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50">
                                     Detail
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -140,7 +121,6 @@
         </div>
 
         @include('pengajuan.partials.modal_create')
-        @include('pengajuan.partials.modal_detail')
         @include('pengajuan.partials.modal_confirm')
 
     </div>
