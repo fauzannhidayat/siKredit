@@ -33,13 +33,3 @@ Sistem Pengajuan Pembiayaan Kredit adalah aplikasi web untuk mengelola pengajuan
 ## Usage
 - Submit credit application
 - Review application status
-
-## Screenshots
-![Uploading image.png…]()
-
-
-## Contributing
-...
-
-## License
-...
