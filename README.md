@@ -63,9 +63,16 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan project di lingkungan lokal
    php artisan migrate
     ```
 
-11. Jalankan Server Lokal:
+11. Jalankan Server Lokal (gunakan **2 terminal yang berbeda**):
+
+    **Terminal 1** – jalankan Laravel server:
     ```bash
     php artisan serve
-    npm run dev && npm run build
     ```
-   (Aplikasi sekarang dapat diakses melalui browser di alamat: http://127.0.0.1:8000).
+
+    **Terminal 2** – jalankan Vite/dev assets:
+    ```bash
+    npm run dev
+    ```
+
+    Aplikasi dapat diakses di: http://127.0.0.1:8000
